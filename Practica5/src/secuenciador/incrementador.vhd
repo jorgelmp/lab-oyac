@@ -5,12 +5,12 @@ use IEEE.numeric_std.all;
 
 entity incrementador is
   port (
-    epresente:      in std_logic_vector(2 downto 0);
-    epresente_inc:  out std_logic_vector(2 downto 0)
+    epresente:      in std_logic_vector(3 downto 0);
+    epresente_inc:  out std_logic_vector(3 downto 0)
   );
 end entity incrementador;
 
 architecture arq_incrementador of incrementador is
 begin
-    epresente_inc <= epresente + "001";
+    epresente_inc <= epresente + "0001";
 end architecture arq_incrementador;

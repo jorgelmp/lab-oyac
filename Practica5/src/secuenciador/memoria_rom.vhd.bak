@@ -9,7 +9,7 @@ entity memoria_rom is
     upa         : out std_logic_vector(9 downto 0);
     oeupa,dupa  : out std_logic;
     wa, ea1, ea0: out std_logic;
-    wb, eb1, eb0: out std_logic;
+    wb, eb1, eb0: out std_logic
     liga        : out std_logic_vector(3 downto 0);
     instruccion : out std_logic_vector(1 downto 0);
     prueba      : out std_logic_vector(1 downto 0)
@@ -47,6 +47,6 @@ begin
         vf          <= int(18);
         upa         <= int(17 downto 8);
         oeupa<= int(7); dupa<= int(6); wb <= int(5); wa <= int(4);
-        eb1 <= int(3); eb0 <=int(2); ea1 <= int(1); ea0 <= int(0);
+        eb1 <= int(3); eb0 <=int(2): ea1 <= int(1); ea0 <= int(0);
     end process;
 end architecture;

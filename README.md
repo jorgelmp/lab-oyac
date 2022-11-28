@@ -1,8 +1,9 @@
 # Laboratorio de Organización y Arquitectura de Computadoras
+
 Repositorio con las soluciones a las prácticas del Laboratorio de Organización y
 Arquitectura de computadoras. Cada práctica es un proyecto de Quartus Prime Lite.
 El código de los componentes está escrito en VHDL y se encuentra en las carpetas
-```/src``` de cada proyecto.
+``/src`` de cada proyecto.
 
 ***
 

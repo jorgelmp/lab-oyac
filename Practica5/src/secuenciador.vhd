@@ -9,7 +9,8 @@ entity secuenciador is
     upa                 : out std_logic_vector(9 downto 0);
     leds                : out std_logic_vector(3 downto 0);
     wa, ea1, ea0        : out std_logic;
-    wb, eb1, eb0        : out std_logic
+    wb, eb1, eb0        : out std_logic;
+	 clkd                : out std_logic
   ) ;
 end secuenciador;
 

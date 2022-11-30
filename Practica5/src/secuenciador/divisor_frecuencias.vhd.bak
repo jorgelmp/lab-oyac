@@ -12,7 +12,7 @@ begin
 	process(clk)
 		begin
 			if(rising_edge(clk)) then
-				if(contador=12500000) then
+				if(contador=50000000) then
 					contador<=0;
 					clkl<= not clkl;
 				else

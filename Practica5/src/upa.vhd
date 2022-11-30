@@ -9,18 +9,18 @@ entity upa is
     UPA       : in std_logic_vector(9 downto 0);
     A,B       : in std_logic_vector(7 downto 0);
     Y0,C,Q0,FC: out std_logic;
-    Yupa      : out std_logic_vector(7 downto 0)
+    Yupa,Qupa : out std_logic_vector(7 downto 0)
   ) ;
 end upa;
 
 architecture arq_upa of upa is
     signal Qr,Yr  : unsigned(7 downto 0);
-    signal Z,Q,Y    : std_logic_vector(7 downto 0):="00000000";
+    signal Z,Q   : std_logic_vector(7 downto 0):="00000000";
     signal R,S  : std_logic_vector(7 downto 0);
 	 signal F    : std_logic_vector(8 downto 0);
 	 signal count: std_logic_vector(2 downto 0):="000" ;
 begin
-    process(UPA,Y,Q)
+    process(UPA,Q)
     begin
     case UPA(3 downto 0) is
         when "0000" => R <= A;  S <= Z;
@@ -64,18 +64,17 @@ begin
         when "001" => Yr <= unsigned(F(7 downto 0));
         when "010" => Yr <= unsigned(A);
         when "011" => Yr <= unsigned(B);
-        when "100" => Yr <= shift_left(unsigned(Yr),1); Yr(7) <= Y7;
-        when "101" => Qr <= shift_left(unsigned(Q),1);  Qr(7) <= Q7;
-        when "110" => Yr <= shift_right(unsigned(Y),1);
-        when "111" => Qr <= shift_right(unsigned(Q),1);
+        when "100" => Yr <= shift_left(Yr,1); Yr(7) <= Y7;
+        when "101" => Qr <= shift_left(Qr,1); Qr(7) <= Q7;
+        when "110" => Yr <= shift_right(Yr,1);
+        when "111" => Qr <= shift_right(Qr,1);
     end case;
-	 Y <= std_logic_vector(Yr);
 	 Q <= std_logic_vector(Qr);
-    Y0 <= Y(0);
+    Y0 <= Yr(0);
     Q0 <= Q(0);
     end process;
 
-    Yupa <= Y when (D='1' and OE='1') else "ZZZZZZZZ";
+    Yupa <= std_logic_vector(Yr) when (D='1' and OE='1') else "ZZZZZZZZ";
 
     with count select 
     FC <= '1' when "111",

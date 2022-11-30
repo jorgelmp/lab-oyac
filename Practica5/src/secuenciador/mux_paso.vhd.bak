@@ -1,0 +1,31 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity mux_paso is
+  port (
+    state: in std_logic_vector(3 downto 0);
+    led_vect: out std_logic_vector(3 downto 0);
+  );
+end entity mux_paso;
+
+-- Modificar para la nueva longitud de ¨paso¨
+
+architecture arq_mux_paso of mux_paso is
+begin
+    process(state)
+    case state is
+        when "0100" => led_vect <= "0000";
+        when "0101" => led_vect <= "0001";
+        when "0110" => led_vect <= "0010";
+        when "0111" => led_vect <= "0011";
+        when "1000" => led_vect <= "0100";
+        when "1001" => led_vect <= "0100";
+        when "1010" => led_vect <= "0101";
+        when "1011" => led_vect <= "0110";
+        when "1100" => led_vect <= "0111";
+        when "1101" => led_vect <= "1000";
+        when "1110" => led_vect <= "1001";
+        when others => led_vect <= "1111";
+    end case;
+    end process;
+end architecture arq_mux_paso;
